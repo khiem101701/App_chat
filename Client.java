@@ -182,16 +182,6 @@ public class Client extends javax.swing.JFrame {
         }
     }
     
-    public void updateTextArea(){
-        String strId = ""+id;
-        jTextArea5.setText("");
-        for(String x : online){
-            if(!strId.equals(x)){
-                jTextArea5.setText(jTextArea5.getText() + "---Client " + x + " online---" + "\n");
-            }
-        }
-    }
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String mess = jTextField1.getText();
         if(jTextField1.getText().isEmpty()){
@@ -204,7 +194,7 @@ public class Client extends javax.swing.JFrame {
                 sendMess("global,."+mess+",."+id);
             }
             catch (IOException ioe){
-                ioe.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "Error!");
             }
         }
         else{
@@ -216,7 +206,7 @@ public class Client extends javax.swing.JFrame {
                 sendMess("personTOperson,."+mess+",."+id+",."+strSplit[1]);
             }
             catch (IOException ioe){
-                ioe.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "Error!");
             }
         }
         jTextField1.setText("");
@@ -251,18 +241,13 @@ public class Client extends javax.swing.JFrame {
                 }
                 if(messSplit[0].equals("updateComboBox")){
                     listOnline = new ArrayList<>();
+                    String online = "";
                     for(int i = 1;i < messSplit.length;i++){
                         listOnline.add(messSplit[i]);
+                        if(id != Integer.parseInt(messSplit[i]))    online += "---Client " + messSplit[i] + " : online---\n";
                     }
+                    jTextArea5.setText(online);
                     updateComboBox();
-                }
-                if(messSplit[0].equals("globalOnline")){
-                    //jTextArea5.setText(jTextArea5.getText() + "---CLient "messSplit[1] + "\n");
-                    online = new ArrayList<>();
-                    for(int i = 1;i < messSplit.length;i++){
-                        online.add(messSplit[i]);
-                    }
-                    updateTextArea();
                 }
                 if(messSplit[0].equals("global")){
                     jTextArea1.setText(jTextArea1.getText() + messSplit[1] + "\n");
@@ -282,6 +267,7 @@ public class Client extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
         Client client = new Client();
     }
 
@@ -307,4 +293,5 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration                   
+
 }
