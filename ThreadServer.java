@@ -32,6 +32,14 @@ public class ThreadServer implements Runnable{
     public int getId() {
         return id;
     }
+
+//    public BufferedReader getIs() {
+//        return is;
+//    }
+//
+//    public BufferedWriter getOs() {
+//        return os;
+//    }
     
     @Override
     public void run() {
