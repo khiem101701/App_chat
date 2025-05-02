@@ -33,6 +33,7 @@ public class JavaChatServer {
         }
         catch(IOException ioe){
             ioe.printStackTrace();
+              //return;
         }
         finally {
             try {
