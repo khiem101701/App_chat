@@ -32,11 +32,7 @@ public class ThreadBus {
             }
             else{
                 try {
-                    //String[] strSplit = mess.split(",.");
-                    //if(strSplit[0].equals("global")) 
                         threadServer.sendMess("global,."+"Client "+id+": "+mess);
-                    //else    threadServer.sendMess(mess);
-                    
                 } 
                 catch (IOException ioe){
                     ioe.printStackTrace();
@@ -50,13 +46,10 @@ public class ThreadBus {
     
     public synchronized void sendListOnline(){
         String messListOnline = "updateComboBox";
-        //String messOnline = "globalOnline";
         for(ThreadServer x : listThreadServer){
             messListOnline += ",." + x.getId();
-            //messOnline += ",." + x.getId();
         }
         JavaChatServer.threadBus.sendMulticart(messListOnline);
-        //JavaChatServer.threadBus.sendMulticart(messOnline);
     }
     
     public void sendMulticart(String mess){
