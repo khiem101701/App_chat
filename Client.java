@@ -30,8 +30,6 @@ public class Client extends javax.swing.JFrame {
      */
     public Client() {
         initComponents();
-        //this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //this.setLocationRelativeTo(null);
         this.setVisible(true);
         jTextArea1.setEditable(false);
         jTextArea5.setEditable(false);
